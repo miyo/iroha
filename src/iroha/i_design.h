@@ -218,6 +218,7 @@ public:
   const string &GetName() const;
   void SetParentModule(IModule *mod);
   IModule *GetParentModule() const;
+  ResourceParams *GetParams() const;
 
   vector<ITable *> tables_;
 
@@ -230,8 +231,7 @@ private:
   IDesign *design_;
   string name_;
   IModule *parent_;
-  string reset_name_ = "rst_n";
-  bool reset_polarity_ = false;
+  ResourceParams *params_;
 };
 
 // Represents a whole design including module hierarchy,

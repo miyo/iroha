@@ -298,7 +298,7 @@ IState *ITable::GetInitialState() const {
 }
 
 IModule::IModule(IDesign *design, const string &name)
-  : design_(design), name_(name), parent_(nullptr) {
+  : design_(design), name_(name), parent_(nullptr), params_(new ResourceParams) {
   design->GetObjectPool()->modules_.Add(this);
 }
 
@@ -318,20 +318,8 @@ IModule *IModule::GetParentModule() const {
   return parent_;
 }
 
-const string &IModule::GetResetName() const {
-  return reset_name_;
-}
-
-const bool &IModule::GetResetPolarity() const {
-  return reset_polarity_;
-}
-
-void IModule::SetResetName(string n) {
-  reset_name_ = n;
-}
-
-void IModule::SetResetPolarity(bool v) {
-  reset_polarity_ = v;
+ResourceParams *IModule::GetParams() const{
+  return params_;
 }
 
 IDesign::IDesign()
